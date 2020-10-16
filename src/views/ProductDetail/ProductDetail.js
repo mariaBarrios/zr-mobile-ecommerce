@@ -4,7 +4,7 @@ export function ProductDetail() {
 
   return(
     <div>
-      Detalle de productor
+      Detalle de producto
     </div>
   )
 }
