@@ -7,6 +7,7 @@ export const ProductItemContainer = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   height: 100%;
   width: 100%;
 
@@ -41,10 +42,12 @@ export const ProductItemInfo = styled.div`
   margin-bottom: ${rem(sizes.mini)};
 
   font-size: ${rem(fontSizes.medium)};
-  color: ${colors.darkGrey};
+  font-weight: 600;
+  color: ${colors.darkTurquoise};
 `
 
 export const ProductItemPrice = styled.div`
   font-size: ${rem(fontSizes.xlarge)};
+  font-weight: 600;
   color: ${colors.magenta};
 `
