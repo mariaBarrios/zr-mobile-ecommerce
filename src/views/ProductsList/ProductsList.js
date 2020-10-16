@@ -37,13 +37,9 @@ export function ProductsList() {
             type="text"
             placeholder="Encuentra lo que buscas"
             value={searchValue}
-            onChange={e => {
-              setValue(e.target.value)
-            }}
+            onChange={e => {setValue(e.target.value)}}
             onFocus={e => (e.target.placeholder = '')}
-            onBlur={e =>
-              (e.target.placeholder = 'Encuentra lo que buscas')
-            }
+            onBlur={e => (e.target.placeholder = 'Encuentra lo que buscas') }
           />
           <IconSearch />
         </InputSearchWrapper>
@@ -66,9 +62,8 @@ function filterbySearchParameter(productList, searchValue) {
     return productList
   }
 
-  if (searchValue) {
-    return productList.filter(
-      item => item.brand.includes(searchValue) || item.model.includes(searchValue)
-    )
-  }
+  return productList.filter(
+    item => item.brand.includes(searchValue) || item.model.includes(searchValue)
+  )
+
 }
