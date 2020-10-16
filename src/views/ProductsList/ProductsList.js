@@ -1,24 +1,41 @@
 import React from 'react'
+import { useQuery } from 'react-query'
+
+import { getProductsList } from '../../core/Products.service'
 
 import { PageTitle } from '../_components/PageTitle/PageTitle'
-
-import { ProductsListContainer } from './ProductList.styles'
 import { ProductItem } from './_components/ProductItem/ProductItem'
+import { ProductsListContainer } from './ProductList.styles'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 export function ProductsList() {
+  const { isLoading, isError, error, data: ProductList } = useQuery(
+    'ProductsItems',
+    getProductsList
+  )
 
-  let data = {
-    brand: "Xiaomi",
-    model: "Mii 500",
-    price: "150",
+  if (isLoading) {
+    return <span>Cargando...</span>
+  }
+
+  if (isError) {
+    return <span>Error: {error.message}</span>
   }
 
   return (
     <>
-      <PageTitle>Lista de productos</PageTitle>
+      <section>
+        <PageTitle>Consulta nuestro catálogo de móviles</PageTitle>
+      </section>
+
       <ProductsListContainer>
-        <ProductItem data={data}></ProductItem>
+        {ProductList?.map(productItem => (
+          <Link to={`/${productItem.id}`} key={productItem.id}>
+            <ProductItem key={productItem.index} data={productItem} />
+          </Link>
+        ))}
       </ProductsListContainer>
     </>
   )
 }
+
