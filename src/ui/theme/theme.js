@@ -18,7 +18,8 @@ export const sizes = {
   mini: 16,
   base: 24,
   medium: 32,
-  large: 48
+  large: 48,
+  xlarge: 64,
 }
 
 export const breakpoints = {

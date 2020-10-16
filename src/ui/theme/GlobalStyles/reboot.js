@@ -53,6 +53,6 @@ export const reboot = css`
   }
 
   strong {
-    font-weight: 900;
+    font-weight: 700;
   }
 `
