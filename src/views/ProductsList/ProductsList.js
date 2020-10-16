@@ -9,7 +9,6 @@ import { ProductsListContainer } from './ProductList.styles'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import {
   IconSearch,
-  InputSearchIconWrapper,
   InputSearchInput,
   InputSearchWrapper
 } from './_components/InputSearch/InputSearch.styles'
