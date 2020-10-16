@@ -7,7 +7,6 @@ export const PageTitle = styled.h1`
   margin-bottom: ${rem(sizes.large)};
 
   font-size: ${rem(fontSizes.large)};
-  font-weight: 900;
   color: ${colors.middleTurquoise};
 
   text-align: center;
