@@ -123,9 +123,8 @@ export const ProductsDetalailItemInfo = styled.div`
 `
 
 export const ProductDetailActions = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `

@@ -21,6 +21,8 @@ import {
   ProductsDetaillItemLabel
 } from './ProductDetail.styles'
 
+import { AddToCart } from './_components/AddToCart'
+
 export function ProductDetail() {
   const { productId } = useParams()
   const { isLoading, isError, error, data: productItemDetail } = useQuery(
@@ -78,9 +80,17 @@ export function ProductDetail() {
             )}
           </ProductDetailDescription>
           <ProductDetailActions>
-            <div>Almacenamiento</div>
-            <div>Color</div>
-            <div>Añadir Botón</div>
+            <AddToCart storages={productItemDetail.options.storages}
+            colors={productItemDetail.options.colors}
+            productId={productId}/>
+{/*   "options": {
+     "colors": [{ "code": 1000, "name": "Black" }],
+     "storages": [
+       { "code": 2000, "name": "16 GB" },
+       { "code": 2001, "name": "32 GB" }
+    ]
+   } */}
+
           </ProductDetailActions>
         </section>
       </ProductsDetailContainer>
@@ -114,10 +124,4 @@ function setDataEstructure(productItemDetail) {
   return dataDetail
 }
 
-//  "options": {
-//     "colors": [{ "code": 1000, "name": "Black" }],
-//     "storages": [
-//       { "code": 2000, "name": "16 GB" },
-//       { "code": 2001, "name": "32 GB" }
-//     ]
-//   }
+
