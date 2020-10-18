@@ -51,6 +51,7 @@ export const colors = {
   darkGrey: '#454848',
 
   text: '#14282E',
+  error: '#FA6561',
 
   black: '#1B1B1B',
   white: '#fff'

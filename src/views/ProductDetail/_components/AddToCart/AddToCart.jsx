@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { addProductItemToCart } from '../../../../core/Products.service'
 import { Loading } from '../../../../ui/_componentes/Loading/Loading'
 import { CartContext } from '../../../_components/CartContext'
-import { Button, Select } from './AddToCart.styles'
+import { Button, ErrorMessage, Select } from './AddToCart.styles'
 
 export function AddToCart({ storages, colors, productId }) {
   const [selectedColor, setSelectedColor] = useState(
@@ -41,20 +41,28 @@ export function AddToCart({ storages, colors, productId }) {
         ))}
       </Select>
 
-      <Button
-        onClick={() =>
-          addProductItemToCart({
-            id: productId,
-            colorCode: selectedColor,
-            storageCode: selectedStorage
-          })
-            .then(result => setCartItems(result.count))
-            .catch(error => setError(error))
-            .finally(() => setLoading(false))
-        }
-        disabled={!selectedColor || !selectedStorage}>
-        {isLoading ? <Loading /> : 'Añadir al carrito'}
-      </Button>
+      <div>
+        <Button
+          onClick={() =>
+            addProductItemToCart({
+              id: productId,
+              colorCode: selectedColor,
+              storageCode: selectedStorage
+            })
+              .then(result => setCartItems(result.count))
+              .catch(error => setError(error))
+              .finally(() => setLoading(false))
+          }
+          disabled={!selectedColor || !selectedStorage}>
+          {isLoading ? <Loading mini /> : 'Añadir al carrito'}
+        </Button>
+        {isError && (
+          <ErrorMessage>
+            Ha habido un problema al añadir este item al carrito.{' '}
+            <strong>Intentalo de nuevo en unos minutos.</strong>
+          </ErrorMessage>
+        )}
+      </div>
     </>
   )
 }

@@ -50,3 +50,10 @@ export const Button = styled.button`
       }
     `}
 `
+
+export const ErrorMessage = styled.div`
+  margin-top: ${rem(sizes.small)};
+
+  font-size: ${rem(fontSizes.small)};
+  color: ${colors.error};
+`

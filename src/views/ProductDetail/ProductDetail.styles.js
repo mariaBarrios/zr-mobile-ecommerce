@@ -32,9 +32,7 @@ export const ProductDetailImageWrapper = styled.figure`
 `
 
 export const ProductDetailImg = styled.img`
-  width: ${rem(250)};
-
-  ${media.desktopLarge`
+  ${media.desktop`
     width: ${rem(300)};
   `}
 `
@@ -141,7 +139,7 @@ export const ProductsDetalailItemInfo = styled.div`
   `}
 `
 
-export const ProductDetailActions = styled.div`
+export const ProductDetailActions = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -149,7 +147,9 @@ export const ProductDetailActions = styled.div`
 
   margin-bottom: ${rem(sizes.medium)};
 
-  > * {
-    margin-bottom: ${rem(sizes.base)};
+  &:not(:last-child) {
+    > * {
+      margin-bottom: ${rem(sizes.base)};
+    }
   }
 `
