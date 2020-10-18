@@ -24,13 +24,11 @@ export const ProductsDetailContainer = styled.section`
   `}
 `
 
-export const ProductDetailImageWrapper = styled.aside`
+export const ProductDetailImageWrapper = styled.figure`
   display: flex;
   justify-content: center;
 
-  ${media.desktop`
-    justify-content: flex-end;
-  `}
+  margin-bottom: ${rem(sizes.base)};
 `
 
 export const ProductDetailImg = styled.img`
@@ -57,7 +55,7 @@ export const ProductDetailInfo = styled.div`
   font-weight: 600;
   color: ${colors.darkTurquoise};
 
-   ${media.desktop`
+  ${media.desktop`
     font-size: ${rem(fontSizes.xlarge)};
   `}
 `
@@ -68,7 +66,7 @@ export const ProductDetailSubinfo = styled.div`
   font-size: ${rem(fontSizes.medium)};
   color: ${colors.middleGrey};
 
-   ${media.desktop`
+  ${media.desktop`
     font-size: ${rem(fontSizes.large)};
   `}
 `
@@ -80,17 +78,38 @@ export const ProductDetailPrice = styled.div`
 `
 
 export const ProductDetailDescription = styled.div`
+  margin-right: ${rem(-grid.gap.mobile)};
   margin-bottom: ${rem(sizes.medium)};
+  margin-left: ${rem(-grid.gap.mobile)};
+
+  ${media.desktop`
+    margin: 0;
+  `}
+`
+
+export const ProductDetailTitle = styled.div`
+  padding-right: ${rem(grid.gap.mobile)};
+  padding-bottom: ${rem(sizes.tiny)};
+  padding-left: ${rem(grid.gap.mobile)};
+  margin-bottom: ${rem(sizes.base)};
+
+  font-weight: 600;
+  color: ${colors.middleTurquoise};
+  text-transform: uppercase;
+
+  border-bottom: 1px solid ${colors.middleTurquoise};
+
+   ${media.desktop`
+    padding-right: 0;
+    padding-left: 0;
+  `}
 `
 
 export const ProductsDetailItem = styled.div`
-  padding-right: ${rem(grid.gap.mobile)};
   padding-top: ${rem(sizes.small)};
+  padding-right: ${rem(grid.gap.mobile)};
   padding-bottom: ${rem(sizes.small)};
   padding-left: ${rem(grid.gap.mobile)};
-
-  margin-right: ${rem(-grid.gap.mobile)};
-  margin-left: ${rem(-grid.gap.mobile)};
 
   border-bottom: 1px solid ${colors.lightGrey};
 
@@ -127,4 +146,10 @@ export const ProductDetailActions = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  margin-bottom: ${rem(sizes.medium)};
+
+  > * {
+    margin-bottom: ${rem(sizes.base)};
+  }
 `

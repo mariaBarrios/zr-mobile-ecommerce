@@ -18,7 +18,8 @@ import {
   ProductDetailInfo,
   ProductDetailSubinfo,
   ProductsDetalailItemInfo,
-  ProductsDetaillItemLabel
+  ProductsDetaillItemLabel,
+  ProductDetailTitle
 } from './ProductDetail.styles'
 
 import { AddToCart } from './_components/AddToCart'
@@ -30,8 +31,10 @@ export function ProductDetail() {
     () => getProductDetail(productId)
   )
 
-  if (isLoading) {
-    return <span> Cargando...</span>
+  console.log('Product Item detail', productItemDetail)
+
+  if (isLoading || !productItemDetail) {
+    return <span>Cargando...</span>
   }
 
   if (isError) {
@@ -43,10 +46,9 @@ export function ProductDetail() {
       <section>
         <PageTitle>Echa un vistazo más en detalle</PageTitle>
       </section>
-
       <ProductsDetailContainer>
-        <ProductDetailImageWrapper>
-          <figure>
+        <aside>
+          <ProductDetailImageWrapper>
             <ProductDetailImg
               src={
                 productItemDetail.imgUrl ? productItemDetail.imgUrl : noImage
@@ -54,8 +56,8 @@ export function ProductDetail() {
               alt={productItemDetail.model}
               target={productItemDetail.model}
             />
-          </figure>
-        </ProductDetailImageWrapper>
+          </ProductDetailImageWrapper>
+        </aside>
         <section>
           <ProductDetailMainInfo>
             <ProductDetailInfo>{productItemDetail.model}</ProductDetailInfo>
@@ -63,35 +65,32 @@ export function ProductDetail() {
               {productItemDetail.brand}
             </ProductDetailSubinfo>
             <ProductDetailPrice>
-              {productItemDetail.price
-                ? `${productItemDetail.price}€`
-                : '---€'}
+              {productItemDetail.price ? `${productItemDetail.price}€` : '---€'}
             </ProductDetailPrice>
           </ProductDetailMainInfo>
+          <ProductDetailActions>
+            <AddToCart
+              storages={productItemDetail.options.storages}
+              colors={productItemDetail.options.colors}
+              productId={productId}
+            />
+          </ProductDetailActions>
           <ProductDetailDescription>
+            <ProductDetailTitle>Características</ProductDetailTitle>
             {setDataEstructure(productItemDetail).map(
               dataDetail =>
                 dataDetail.info && (
                   <ProductsDetailItem>
-                    <ProductsDetaillItemLabel>{dataDetail.label}</ProductsDetaillItemLabel>
-                    <ProductsDetalailItemInfo>{dataDetail.info}</ProductsDetalailItemInfo>
+                    <ProductsDetaillItemLabel>
+                      {dataDetail.label}
+                    </ProductsDetaillItemLabel>
+                    <ProductsDetalailItemInfo>
+                      {dataDetail.info}
+                    </ProductsDetalailItemInfo>
                   </ProductsDetailItem>
                 )
             )}
           </ProductDetailDescription>
-          <ProductDetailActions>
-            <AddToCart storages={productItemDetail.options.storages}
-            colors={productItemDetail.options.colors}
-            productId={productId}/>
-{/*   "options": {
-     "colors": [{ "code": 1000, "name": "Black" }],
-     "storages": [
-       { "code": 2000, "name": "16 GB" },
-       { "code": 2001, "name": "32 GB" }
-    ]
-   } */}
-
-          </ProductDetailActions>
         </section>
       </ProductsDetailContainer>
     </>
@@ -116,12 +115,9 @@ function setDataEstructure(productItemDetail) {
       info: productItemDetail.secondaryCmera
     },
     { label: 'Batería', info: productItemDetail.battery },
-
     { label: 'Dimensiones', info: productItemDetail.dimentions },
     { label: 'Weight', info: `${productItemDetail.weight} gr` }
   ]
 
   return dataDetail
 }
-
-
