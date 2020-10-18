@@ -1,5 +1,5 @@
-import { css } from "styled-components";
-import { breakpoints } from "./theme";
+import { css } from 'styled-components'
+import { breakpoints } from './theme'
 
 export const media = {
   onlyMobile: (...args) => css`
@@ -21,5 +21,5 @@ export const media = {
     @media (min-width: ${breakpoints.desktop + 1}px) {
       ${css(...args)};
     }
-  `,
+  `
 }

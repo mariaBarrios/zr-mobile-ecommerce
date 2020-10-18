@@ -6,7 +6,7 @@ export const grid = {
   contentMaxWidth: 1200,
   gap: {
     mobile: 24,
-    desktop: 48,
+    desktop: 48
   }
 }
 
@@ -19,14 +19,14 @@ export const sizes = {
   base: 24,
   medium: 32,
   large: 48,
-  xlarge: 64,
+  xlarge: 64
 }
 
 export const breakpoints = {
   mobile: 480,
   tablet: 768,
   desktop: 1024,
-  desktopLarge: 1440,
+  desktopLarge: 1440
 }
 
 export const fontSizes = {
@@ -36,7 +36,7 @@ export const fontSizes = {
   medium: 18,
   large: 25.62,
   xlarge: 32.43,
-  huge: 51.97,
+  huge: 51.97
 }
 
 export const colors = {

@@ -1,6 +1,6 @@
 import { rem } from 'polished'
 import { createGlobalStyle, css } from 'styled-components'
-import { colors, sizes} from '../theme'
+import { colors, sizes } from '../theme'
 
 import { reboot } from './reboot'
 import { reset } from './reset'

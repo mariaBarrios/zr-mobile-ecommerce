@@ -5,7 +5,6 @@ import { colors, sizes } from '../../../../ui/theme/theme'
 
 import { ReactComponent as Search } from '../../../../ui/icon/search.svg'
 
-
 export const InputSearchWrapper = styled.div`
   display: flex;
   align-items: center;
