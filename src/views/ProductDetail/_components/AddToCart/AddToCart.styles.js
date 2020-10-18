@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { colors, fontSizes, sizes } from '../../../../ui/theme/theme'
 
 export const Select = styled.select`
-  width: 80%;
+  width: 100%;
 
   padding-top: ${rem(sizes.small)};
   padding-bottom: ${rem(sizes.small)};

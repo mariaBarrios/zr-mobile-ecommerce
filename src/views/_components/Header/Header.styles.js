@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { rem } from 'polished'
 
 import { colors, fontSizes, grid, sizes } from '../../../ui/theme/theme'
@@ -8,15 +8,16 @@ import { media } from '../../../ui/theme/media'
 
 export const HeaderContainer = styled.header`
   position: fixed;
-  top:0;
-  right:0;
-  left:0;
+  top: 0;
+  right: 0;
+  left: 0;
 
   padding: ${rem(sizes.small)} 0;
   background-color: ${colors.white};
 
-  box-shadow: 0px ${rem(sizes.mini)} ${rem(sizes.medium)} 0px ${colors.lightGrey};
-  z-index:1;
+  box-shadow: 0px ${rem(sizes.mini)} ${rem(sizes.medium)} 0px
+    ${colors.lightGrey};
+  z-index: 1;
 
   ${media.desktop`
     padding: ${rem(sizes.mini)} 0;
@@ -35,7 +36,6 @@ export const HeaderContent = styled.div`
   ${media.desktop`
     padding: 0 ${rem(grid.gap.desktop)};
   `}
-
 `
 
 export const Logo = styled.img`
@@ -47,32 +47,37 @@ export const ShoppingCartWrapper = styled.div`
 
   margin-right: ${rem(sizes.xtiny)};
 
-  &:before {
-    content: '1';
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    top: 0;
-    right: ${rem(-sizes.xtiny)};
-
-    width: ${rem(sizes.mini)};
-    height: ${rem(sizes.mini)};
-
-    background-color: ${colors.middleTurquoise};
-    border-radius: 100%;
-
-    color: ${colors.white};
-    font-size: ${fontSizes.small};
-  }
-
   transition: all ease 0.5s;
 
   &:hover {
     cursor: pointer;
     transform: scale(1.2);
   }
+
+  ${p =>
+    p.cartItems &&
+    css`
+      &:before {
+        content: '${p.cartItems}';
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        top: 0;
+        right: ${rem(-sizes.xtiny)};
+
+        width: ${rem(18)};
+        height: ${rem(18)};
+
+        background-color: ${colors.middleTurquoise};
+        border-radius: 100%;
+
+        font-size: ${rem(fontSizes.small)};
+        font-weight: 600;
+        color: ${colors.white};
+      }
+    `}
 `
 
 export const ShoppingCartIcon = styled(CartIcon)`

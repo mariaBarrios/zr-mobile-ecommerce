@@ -7,18 +7,21 @@ import { Header } from './views/_components/Header/Header'
 import { Container } from './views/_components/Container/Container.styles'
 import { ProductDetail } from './views/ProductDetail'
 import { ProductsList } from './views/ProductsList'
+import { CartProvider } from './views/_components/CartContext'
 
 function App() {
   return (
     <Router>
       <GlobalStyles />
-      <Header />
-      <Container>
-        <Switch>
-          <Route exact path="/" component={ProductsList} />
-          <Route path="/:productId" component={ProductDetail} />
-        </Switch>
-      </Container>
+      <CartProvider>
+        <Header />
+        <Container>
+          <Switch>
+            <Route exact path="/" component={ProductsList} />
+            <Route path="/:productId" component={ProductDetail} />
+          </Switch>
+        </Container>
+      </CartProvider>
     </Router>
   )
 }

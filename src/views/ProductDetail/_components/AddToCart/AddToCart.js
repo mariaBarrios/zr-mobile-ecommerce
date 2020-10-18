@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { CartContext } from '../../../_components/CartContext'
 import { Button, Select } from './AddToCart.styles'
 
 export function AddToCart({ storages, colors }) {
@@ -8,6 +9,8 @@ export function AddToCart({ storages, colors }) {
   const [selectedStorage, setSelectedStorage] = useState(
     storages.length === 1 && storages[0].code
   )
+
+  const { cartItems, setCartItems } = useContext(CartContext)
 
   return (
     <>
@@ -34,7 +37,7 @@ export function AddToCart({ storages, colors }) {
       </Select>
 
       <Button
-        onClick={() => console.log('Button click')}
+        onClick={() => setCartItems(cartItems + 1)}
         disabled={!selectedColor || !selectedStorage}>
         Añadir al carrito
       </Button>
