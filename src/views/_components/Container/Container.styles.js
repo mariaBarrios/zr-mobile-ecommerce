@@ -10,7 +10,7 @@ export const Container = styled.main`
   padding-left: ${rem(grid.gap.mobile)};
 
   margin: 0 auto;
-  margin-top: ${rem(135)}; /*Tamaño que ocupa el header*/
+  margin-top: ${rem(120)}; /*Tamaño que ocupa el header*/
   margin-bottom: ${rem(sizes.xlarge)};
 
   ${media.desktop`
