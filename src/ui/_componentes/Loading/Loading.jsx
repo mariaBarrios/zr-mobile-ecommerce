@@ -1,14 +1,14 @@
 import React from 'react'
 import { LoadingWrapper, LoadingItem, LoadingPiece } from './Loading.styles'
 
-export function Loading(fullPage) {
+export function Loading({ fullPage, mini }) {
   return (
     <LoadingWrapper fullPage={fullPage}>
-      <LoadingItem>
-        <LoadingPiece />
-        <LoadingPiece />
-        <LoadingPiece />
-        <LoadingPiece />
+      <LoadingItem mini={mini}>
+        <LoadingPiece mini={mini} />
+        <LoadingPiece mini={mini} />
+        <LoadingPiece mini={mini} />
+        <LoadingPiece mini={mini} />
       </LoadingItem>
     </LoadingWrapper>
   )
