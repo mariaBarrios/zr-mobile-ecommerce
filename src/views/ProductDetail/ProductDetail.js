@@ -23,6 +23,7 @@ import {
 } from './ProductDetail.styles'
 
 import { AddToCart } from './_components/AddToCart'
+import { Loading } from '../../ui/_componentes/Loading/Loading'
 
 export function ProductDetail() {
   const { productId } = useParams()
@@ -34,7 +35,7 @@ export function ProductDetail() {
   console.log('Product Item detail', productItemDetail)
 
   if (isLoading || !productItemDetail) {
-    return <span>Cargando...</span>
+    return <Loading />
   }
 
   if (isError) {

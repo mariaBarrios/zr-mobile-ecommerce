@@ -12,6 +12,7 @@ import {
   InputSearchInput,
   InputSearchWrapper
 } from './_components/InputSearch/InputSearch.styles'
+import { Loading } from '../../ui/_componentes/Loading/Loading'
 
 export function ProductsList() {
   const { isLoading, isError, error, data: ProductList } = useQuery(
@@ -20,8 +21,8 @@ export function ProductsList() {
   )
   const [searchValue, setValue] = useState('')
 
-  if (isLoading) {
-    return <span>Cargando...</span>
+  if (isLoading || !ProductList) {
+    return <Loading />
   }
 
   if (isError) {
@@ -37,16 +38,17 @@ export function ProductsList() {
             type="text"
             placeholder="Encuentra lo que buscas"
             value={searchValue}
-            onChange={e => {setValue(e.target.value)}}
+            onChange={e => {
+              setValue(e.target.value)
+            }}
             onFocus={e => (e.target.placeholder = '')}
-            onBlur={e => (e.target.placeholder = 'Encuentra lo que buscas') }
+            onBlur={e => (e.target.placeholder = 'Encuentra lo que buscas')}
           />
           <IconSearch />
         </InputSearchWrapper>
       </section>
 
       <ProductsListContainer>
-
         {filterbySearchParameter(ProductList, searchValue).map(productItem => (
           <Link to={`/${productItem.id}`} key={productItem.id}>
             <ProductItem key={productItem.index} data={productItem} />
@@ -65,5 +67,4 @@ function filterbySearchParameter(productList, searchValue) {
   return productList.filter(
     item => item.brand.includes(searchValue) || item.model.includes(searchValue)
   )
-
 }
