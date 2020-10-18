@@ -1,10 +1,24 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { rem } from 'polished'
 
 import { colors, fontSizes, grid, sizes } from '../../../ui/theme/theme'
 
 import { ReactComponent as CartIcon } from '../../../ui/icon/Cart.svg'
 import { media } from '../../../ui/theme/media'
+
+export const CartBadgeAnimation = keyframes`
+  0% {
+    width: ${rem(5)};
+    height: ${rem(5)};
+    opacity: 0.5;
+  }
+
+  100% {
+    width: ${rem(18)};
+    height: ${rem(18)};
+    opacity: 1;
+  }
+ `
 
 export const HeaderContainer = styled.header`
   position: fixed;
@@ -76,6 +90,8 @@ export const ShoppingCartWrapper = styled.div`
         font-size: ${rem(fontSizes.small)};
         font-weight: 600;
         color: ${colors.white};
+
+        animation: ${CartBadgeAnimation} 0.2s ease;
       }
     `}
 `
