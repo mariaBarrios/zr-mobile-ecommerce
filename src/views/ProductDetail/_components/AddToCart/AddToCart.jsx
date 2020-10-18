@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react'
+import { addProductItemToCart } from '../../../../core/Products.service'
+import { Loading } from '../../../../ui/_componentes/Loading/Loading'
 import { CartContext } from '../../../_components/CartContext'
 import { Button, Select } from './AddToCart.styles'
 
-export function AddToCart({ storages, colors }) {
+export function AddToCart({ storages, colors, productId }) {
   const [selectedColor, setSelectedColor] = useState(
     colors.length === 1 && colors[0].code
   )
@@ -10,7 +12,10 @@ export function AddToCart({ storages, colors }) {
     storages.length === 1 && storages[0].code
   )
 
-  const { cartItems, setCartItems } = useContext(CartContext)
+  const { setCartItems } = useContext(CartContext)
+
+  const [isError, setError] = useState(false)
+  const [isLoading, setLoading] = useState(false)
 
   return (
     <>
@@ -37,9 +42,18 @@ export function AddToCart({ storages, colors }) {
       </Select>
 
       <Button
-        onClick={() => setCartItems(cartItems + 1)}
+        onClick={() =>
+          addProductItemToCart({
+            id: productId,
+            colorCode: selectedColor,
+            storageCode: selectedStorage
+          })
+            .then(result => setCartItems(result.count))
+            .catch(error => setError(error))
+            .finally(() => setLoading(false))
+        }
         disabled={!selectedColor || !selectedStorage}>
-        Añadir al carrito
+        {isLoading ? <Loading /> : 'Añadir al carrito'}
       </Button>
     </>
   )
