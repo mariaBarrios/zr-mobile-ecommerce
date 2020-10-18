@@ -1,9 +1,9 @@
 import React from 'react'
 import { LoadingWrapper, LoadingItem, LoadingPiece } from './Loading.styles'
 
-export function Loading() {
+export function Loading(fullPage) {
   return (
-    <LoadingWrapper>
+    <LoadingWrapper fullPage={fullPage}>
       <LoadingItem>
         <LoadingPiece />
         <LoadingPiece />

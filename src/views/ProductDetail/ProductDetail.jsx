@@ -33,10 +33,8 @@ export function ProductDetail() {
     () => getProductDetail(productId)
   )
 
-  console.log('Product Item detail', productItemDetail)
-
   if (isLoading || !productItemDetail) {
-    return <Loading />
+    return <Loading fullPage />
   }
 
   if (isError) {

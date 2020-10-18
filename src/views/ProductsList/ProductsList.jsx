@@ -22,7 +22,7 @@ export function ProductsList() {
   const [searchValue, setValue] = useState('')
 
   if (isLoading || !ProductList) {
-    return <Loading />
+    return <Loading fullPage />
   }
 
   if (isError) {

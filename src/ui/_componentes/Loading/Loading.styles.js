@@ -18,7 +18,7 @@ export const LoadingWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  height: 100vh;
+  height: ${p => p.fullPage && '100vh'};
 `
 
 export const LoadingItem = styled.div`
