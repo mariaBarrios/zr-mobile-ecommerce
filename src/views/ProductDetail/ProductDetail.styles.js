@@ -99,7 +99,7 @@ export const ProductDetailTitle = styled.div`
 
   border-bottom: 1px solid ${colors.middleTurquoise};
 
-   ${media.desktop`
+  ${media.desktop`
     padding-right: 0;
     padding-left: 0;
   `}

@@ -24,6 +24,7 @@ import {
 
 import { AddToCart } from './_components/AddToCart'
 import { Loading } from '../../ui/_componentes/Loading/Loading'
+import { GoBack } from '../../ui/_componentes/GoBack/GoBack'
 
 export function ProductDetail() {
   const { productId } = useParams()
@@ -44,6 +45,7 @@ export function ProductDetail() {
 
   return (
     <>
+      <GoBack to="/" />
       <section>
         <PageTitle>Echa un vistazo más en detalle</PageTitle>
       </section>
@@ -81,7 +83,7 @@ export function ProductDetail() {
             {setDataEstructure(productItemDetail).map(
               dataDetail =>
                 dataDetail.info && (
-                  <ProductsDetailItem>
+                  <ProductsDetailItem key={dataDetail.label}>
                     <ProductsDetaillItemLabel>
                       {dataDetail.label}
                     </ProductsDetaillItemLabel>
