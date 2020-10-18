@@ -31,19 +31,19 @@ export const ProductItemContent = styled.section`
   text-align: center;
 `
 
-export const ProductItemSubInfo = styled.div`
-  margin-bottom: ${rem(sizes.tiny)};
-
-  font-size: ${rem(fontSizes.base)};
-  color: ${colors.middleGrey};
-`
-
 export const ProductItemInfo = styled.div`
-  margin-bottom: ${rem(sizes.mini)};
+  margin-bottom: ${rem(sizes.tiny)};
 
   font-size: ${rem(fontSizes.medium)};
   font-weight: 600;
   color: ${colors.darkTurquoise};
+`
+
+export const ProductItemSubInfo = styled.div`
+  margin-bottom: ${rem(sizes.mini)};
+
+  font-size: ${rem(fontSizes.base)};
+  color: ${colors.middleGrey};
 `
 
 export const ProductItemPrice = styled.div`

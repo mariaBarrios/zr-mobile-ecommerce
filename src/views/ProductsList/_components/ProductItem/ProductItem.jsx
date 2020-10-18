@@ -24,8 +24,8 @@ export function ProductItem({ data }) {
         </figure>
       </ProductItemImageWrapper>
       <ProductItemContent>
-        <ProductItemSubInfo>{data.brand}</ProductItemSubInfo>
         <ProductItemInfo>{data.model}</ProductItemInfo>
+        <ProductItemSubInfo>{data.brand}</ProductItemSubInfo>
         <ProductItemPrice>
           {data.price ? `${data.price}€` : `---€`}
         </ProductItemPrice>
